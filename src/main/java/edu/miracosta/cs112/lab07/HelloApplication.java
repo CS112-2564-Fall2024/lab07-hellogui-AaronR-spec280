@@ -22,6 +22,7 @@ public class HelloApplication extends Application implements EventHandler<Action
 
     //Start 2-9
     Button button;
+    Button button2;
     Label label;
     public void start(Stage primaryStage) throws Exception{
         primaryStage.setTitle("Hello GUI: Aaron R.");
@@ -54,6 +55,14 @@ public class HelloApplication extends Application implements EventHandler<Action
         anchorPane.setLeftAnchor(button, 0.0);
         anchorPane.getChildren().add(button);
         button.setOnAction(this);
+
+        button2 = new Button("Second Button!");
+        anchorPane.setBottomAnchor(button2, 100.0);
+        anchorPane.setLeftAnchor(button2, 100.0);
+        anchorPane.getChildren().add(button2);
+        button2.setOnAction(this);
+
+
 
 
 
