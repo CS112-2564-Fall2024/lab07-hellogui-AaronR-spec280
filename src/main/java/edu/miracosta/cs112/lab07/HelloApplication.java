@@ -11,7 +11,7 @@ import javafx.scene.control.Button;     //class for button component
 import javafx.event.EventHandler;       //interface for handling events
 import javafx.event.ActionEvent;        //class for type of event for action (like button or key pressed)
 
-public class HelloApplication extends Application { //inheriting core functionality + this class will handle events
+public class HelloApplication extends Application implements EventHandler<ActionEvent>{ //inheriting core functionality + this class will handle events
     /*** GUI COMPONENTS ***/
     // TODO: follow step 25 in README.md to create reference variables
 
@@ -21,7 +21,9 @@ public class HelloApplication extends Application { //inheriting core functional
     }
 
     //Start 2-9
-    public void start(Stage primaryStage) throws Exception {
+    Button button;
+    Label label;
+    public void start(Stage primaryStage) throws Exception{
         primaryStage.setTitle("Hello GUI: Aaron R.");
 
         StackPane layout = new StackPane();
@@ -34,7 +36,7 @@ public class HelloApplication extends Application { //inheriting core functional
         // primaryStage.setChildren();
 
 //Start 10 - 29
-        Label label = new Label();
+        label = new Label();
         label.setText("Hello GUI World");
 
         layout.getChildren().add(label);
@@ -47,8 +49,23 @@ public class HelloApplication extends Application { //inheriting core functional
         anchorPane.getChildren().add(label);
         layout.getChildren().add(anchorPane);
 
+        button = new Button("Click Me!");
+        anchorPane.setBottomAnchor(button, 0.0);
+        anchorPane.setLeftAnchor(button, 0.0);
+        anchorPane.getChildren().add(button);
+        button.setOnAction(this);
+
+
+
 
     }
+    public void handle(ActionEvent e){
+        if (e.getSource() == button) {
+            label.setText("New Text");
+        }
+    }
+
+
 }
 
     // TODO: follow steps 2-9 in README.md to create a start method
